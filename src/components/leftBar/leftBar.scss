@@ -1,0 +1,55 @@
+.leftBar{
+    flex: 3;
+    height: calc(100vh-50px);
+    background-color:whitesmoke;
+    overflow-y: scroll;
+    position: sticky;
+    top: 50px;
+
+ 
+    .leftBarContainer{
+        padding: 20px;
+
+        .leftBarList{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            .leftBarListItem{
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                cursor: pointer;
+
+                .MuiSvgIcon-root{
+                    margin-right: 15px;
+                }
+                &:hover{
+                    background-color: gray;
+                }
+            }
+        }
+        .leftBarBtn{
+            border: none;
+            width: 150px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            &:hover{
+                background-color: gray;
+            }
+        }
+
+        hr{
+            margin: 20px 0;
+        }
+
+        .leftBarFriendList{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+    }
+   
+}
