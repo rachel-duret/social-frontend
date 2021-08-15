@@ -5,8 +5,10 @@ function RightBar() {
     return (
         <div className="rightBar">
             this is right bar
+            
         </div>
     )
 }
 
 export default RightBar
+

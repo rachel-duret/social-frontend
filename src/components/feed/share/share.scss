@@ -1,0 +1,53 @@
+.share{border-radius: 20px;
+    width: 100%;
+    height: 200px;
+    -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
+    box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66);
+    margin-left: 20px;
+
+    .shareTop{
+        display: flex;
+        align-items: center;
+        img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 15px;
+        }
+        input{
+            width: 100%;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 20px;
+            outline: none;
+            -webkit-box-shadow: 7px 8px 5px -6px #312233; 
+            box-shadow: 7px 8px 5px -6px #908d91;
+            
+        }
+    }
+
+    .shareBtn{
+        .shareOptions{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-top: 15px;
+            :hover{
+                background-color: gray;
+                border-radius: 5px;
+               
+            }
+
+            .shareOption{
+                display: flex;
+                align-items: center;
+                cursor: pointer; 
+                span{
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
+}

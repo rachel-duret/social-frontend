@@ -1,20 +1,21 @@
 import React from 'react'
-import './leftBar.scss';
+import './leftBar.scss'
 import {
-     RssFeed,        
-     Chat, 
-     PlayCircleFilledOutlined,
-     Group,
-     Bookmark,
-     HelpOutline,
-     WorkOutline,
-     Event,
-     School,
-     } from '@material-ui/icons'
+    RssFeed,
+    Chat,
+    PlayCircleFilledOutlined,
+    Group,
+    Bookmark,
+    HelpOutline,
+    WorkOutline,
+    Event,
+    School,
+  } from "@material-ui/icons";
 
-function SideBar() {
+function LeftBar() {
     return (
-        <div className="leftBar">
+        <div>
+            <div className="leftBar">
             <div className="leftBarContainer">
                 <ul className="leftBarList">
                     <li className="leftBarListItem">
@@ -72,10 +73,41 @@ function SideBar() {
                 </ul>
                <button className="leftBarBtn">Show More</button>
                <hr />
-               <ul className="leftBarFrindList">Friend List</ul>
+               <ul className="leftBarFrindList">
+                   <li className="leftBarItem">
+                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
+                     <span className="leftBarFriendName">Rachel ku</span>                    
+                   </li>
+                   <li className="leftBarItem">
+                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
+                     <span className="leftBarFriendName">Rachel ku</span>                    
+                   </li>
+                   <li className="leftBarItem">
+                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
+                     <span className="leftBarFriendName">Rachel ku</span>                    
+                   </li>
+                   <li className="leftBarItem">
+                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
+                     <span className="leftBarFriendName">Rachel ku</span>                    
+                   </li>
+                   <li className="leftBarItem">
+                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
+                     <span className="leftBarFriendName">Rachel ku</span>                    
+                   </li>
+                   <li className="leftBarItem">
+                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
+                     <span className="leftBarFriendName">Rachel ku</span>                    
+                   </li>
+                   <li className="leftBarItem">
+                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
+                     <span className="leftBarFriendName">Rachel ku</span>                    
+                   </li>
+                </ul>
+              
             </div>
+        </div>
         </div>
     )
 }
 
-export default SideBar
+export default LeftBar
