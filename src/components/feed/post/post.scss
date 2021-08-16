@@ -1,6 +1,6 @@
 .post{
     border-radius: 20px;
-    width: 100%;
+    width: 95%;
     height: auto;
     -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
     box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66);
@@ -44,6 +44,7 @@
         .postCenter{
             display: flex;
             flex-direction: column;
+            align-items: center;
 
             img{
                 margin: 20px;

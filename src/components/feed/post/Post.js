@@ -1,15 +1,25 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './post.scss';
 import { MoreVert } from '@material-ui/icons'
-function Post() {
+import {Users} from '../../../datas'
+function Post({post}) {
+    const [like, setLike] = useState(post.like)
+    const [isLiked, setIsLiked] = useState(false)
+
+    const likeHandle = () =>{
+        setLike(isLiked ? like-1 : like+1)
+        setIsLiked(!isLiked)
+    }
+  
     return (
+       
         <div className="post">
             <div className="postContainer">
                 <div className="postTop">
                     <div className="postTopLeft">
-                      <img src="./assets/photo2.jpg" alt="" className="postImg" />
-                      <span className="username">User Name</span>
-                      <span className="date">5 ago</span>
+                      <img src={Users.filter(user=> user.id===post?.userId)[0].profilePicture} alt="" className="postImg" />
+                      <span className="username">{Users.filter(user =>user.id === post?.userId)[0].username}</span>
+                      <span className="date">{post.date}</span>
                     </div>
                     <div className="postTopRight">
                         <MoreVert />
@@ -18,16 +28,19 @@ function Post() {
                     
                 </div>
                 <div className="postCenter">
-                    <span>What do you think of this pic?</span>
-                    <img src="./assets/teddy2.jpg" alt="" />
+                    <span>{post.desc}</span>
+                    <img src={post.photo} alt="" />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
-                        <img src="./assets/like.png" alt="" />
+                        <img src="./assets/like.png" alt="" onClick={likeHandle} />
                         <img src="./assets/heart.png" alt="" />
-                        <span>10 peoples liked </span>
+                        <span>{like} </span>
                     </div>
-                    <div className="postBottomRight">8 comments</div>
+                    <div className="postBottomRight">
+                        {post.comment}
+                        <span>comments</span>
+                    </div>
                   {/*   <ThumbUp />
                     <Message />
                     <Share /> */}

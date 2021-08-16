@@ -1,11 +1,12 @@
 .share{
     border-radius: 20px;
-    width: 100%;
+    width: 95%;
     height: 200px;
     -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
     box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66);
-    margin-left: 20px;
-    margin-top: 20px;
+    margin: 20px;
+    vertical-align: middle;
+  
 
     .shareTop{
         display: flex;
@@ -23,8 +24,10 @@
             margin-right: 15px;
             border-radius: 20px;
             outline: none;
-            -webkit-box-shadow: 7px 8px 5px -6px #312233; 
-            box-shadow: 7px 8px 5px -6px #908d91;
+            border: none;
+            -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
+            box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66);
+           
             
         }
     }

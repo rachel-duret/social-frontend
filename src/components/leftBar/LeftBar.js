@@ -11,6 +11,8 @@ import {
     Event,
     School,
   } from "@material-ui/icons";
+  import {Users} from '../../datas'
+  import Friends from './Friends';
 
 function LeftBar() {
     return (
@@ -73,36 +75,12 @@ function LeftBar() {
                 </ul>
                <button className="leftBarBtn">Show More</button>
                <hr />
-               <ul className="leftBarFrindList">
-                   <li className="leftBarItem">
-                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">Rachel ku</span>                    
-                   </li>
-                   <li className="leftBarItem">
-                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">Rachel ku</span>                    
-                   </li>
-                   <li className="leftBarItem">
-                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">Rachel ku</span>                    
-                   </li>
-                   <li className="leftBarItem">
-                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">Rachel ku</span>                    
-                   </li>
-                   <li className="leftBarItem">
-                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">Rachel ku</span>                    
-                   </li>
-                   <li className="leftBarItem">
-                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">Rachel ku</span>                    
-                   </li>
-                   <li className="leftBarItem">
-                     <img src="/assets/photo1.jpg" alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">Rachel ku</span>                    
-                   </li>
-                </ul>
+               {
+                   Users.map(user=>(
+                       <Friends key={user.id} user={user} />
+                   ))
+               }
+               
               
             </div>
         </div>

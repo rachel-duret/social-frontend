@@ -1,12 +1,17 @@
 .rightBar{
     flex: 3;
-    margin-left: 20px;
+    height: calc(100vh-50px);
+    background-color:whitesmoke;
+    overflow-y: scroll;
+    position: sticky;
+    top: 50px;
 
     .birthdayContainer{
 
         display: flex;
         align-items: center;
         margin-left: 20px;
+        margin-top: 20px;
 
         img{
             width: 50px;
@@ -16,6 +21,9 @@
             font-size: 12px;
             text-overflow:clip;
             margin-left: 5px;
+            b{
+                cursor: pointer;
+            }
         }
     }
     .rightBarAd{
@@ -41,6 +49,7 @@
                 height: 30px;
                 border-radius: 50%;
                 object-fit: cover;
+                cursor: pointer;
             }
             span{
                 width: 10px;
@@ -50,6 +59,7 @@
                 background-color: green;
                 position: absolute;
                 left: 25px;
+                
             }
             
         }
@@ -57,6 +67,7 @@
             margin-left: 20px;
             font-size: 14px;
             font-weight: 600px;
+            cursor: pointer;
         }
         
     }
