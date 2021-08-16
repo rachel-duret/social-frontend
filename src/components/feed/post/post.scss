@@ -1,0 +1,82 @@
+.post{
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
+    box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66);
+    margin-left: 20px;
+
+    .postContainer{
+        margin-top: 20px;
+        .postTop{
+            display: flex;
+           align-items: center;
+           justify-content: space-between;
+
+           .postTopLeft{
+               display: flex;
+               align-items: center;
+            img{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin: 15px;
+                cursor: pointer;
+            }
+            .username{
+                font-size: 14px;
+                font-weight: 500px;
+                cursor: pointer;
+                margin-right: 15px;
+            }
+            .date{
+                font-size: 10px;
+            }
+           }
+           .postTopRight{
+               margin-right: 20px;
+               cursor: pointer;
+           }
+        
+        }
+
+        .postCenter{
+            display: flex;
+            flex-direction: column;
+
+            img{
+                margin: 20px;
+                width: 100%;
+                max-height: 500px;
+                object-fit: contain;
+                cursor: pointer;
+            }
+        }
+        .postBottom{
+            display: flex;
+            justify-content: space-between;
+
+            .postBottomLeft{
+                margin-left: 20px;
+                display: flex;
+                
+                img{
+                    margin-right: 5px;
+                    width: 20px;
+                    height: 20px;
+                    margin-bottom: 15px;
+                    object-fit: contain;
+                }
+                span{
+                    font-size: 12px;
+                }
+            }
+            .postBottomRight{
+                margin-right: 20px;
+                font-size: 12px;
+               
+            }
+        }
+    }
+}

@@ -5,14 +5,15 @@ import {PermMedia, Label, Room, EmojiEmotions} from '@material-ui/icons'
 function Share() {
     return (
         <div className='share'>
-            <div className="shareCantainer">
+            <div className="shareContainer">
                 <div className="shareTop">
                     <img src="/assets/photo1.jpg" alt="" className="shareImg" />
-                    <input type="text" className="shareInput" placeholder="What's in your mind ?" />
+                    <label htmlFor="shareInput"></label>
+                    <input type="text" className="shareInput" id="shareInput" placeholder="What's in your mind ?" />
                 </div>
                 <hr/>
                 
-                <div className="shareBtn">
+                <div className="shareBottom">
                   <div className="shareOptions">
                     <div className="shareOption">
                         <PermMedia htmlColor="green" />
@@ -30,14 +31,10 @@ function Share() {
                         <EmojiEmotions htmlColor='goldenrod'/>
                         <span>Feelings</span>
                     </div>
-                  </div>
-
-                </div>
-                
-
-
-            </div>
-           
+                  </div> 
+                  <button>Share</button>               
+                </div>    
+            </div>           
         </div>
     )
 }
