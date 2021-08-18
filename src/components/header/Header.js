@@ -1,10 +1,13 @@
-import React from 'react'
+import React,{ useContext } from 'react'
 import './header.scss'
 import {Search, Person, Chat, NotificationsActive } from '@material-ui/icons';
 import {Link} from 'react-router-dom'
-/* import {BrowerRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom' */
+import {AuthContext} from '../../context/AuthContext'
+
 
 function Header() {
+    const { user } = useContext( AuthContext );
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
     return (
         <div className="headerContainer">
             <div className="headerLeft">
@@ -41,7 +44,10 @@ function Header() {
                         <span className="headerIconBadge">1</span>
                     </div>
                 </div>
-                <img src="assets/photo1.jpg" alt="" className="headerImg" />
+                <Link to={ `/profile/${user.username}`}>
+                  <img src={ user.profilePicture ? PF + user.profilePicture : PF + "person/avatar.png" } alt="" className="headerImg" />
+                </Link>
+                
                 
             </div>
             

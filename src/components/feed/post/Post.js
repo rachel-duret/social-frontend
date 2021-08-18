@@ -1,9 +1,10 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useContext} from 'react';
 import './post.scss';
-import { MoreVert, Person } from '@material-ui/icons'
+import { MoreVert } from '@material-ui/icons'
 import axios from 'axios';
 import {format} from 'timeago.js';
 import {Link} from 'react-router-dom';
+import { AuthContext} from '../../../context/AuthContext'
 function Post({post}) {
     const [like, setLike] = useState(post.like)
     const [isLiked, setIsLiked] = useState(false)
@@ -32,7 +33,7 @@ function Post({post}) {
                 <div className="postTop">
                     <div className="postTopLeft">
                         <Link to={`profile/${user.username}`}>
-                          <img src={user.profilePicture? user.profiePicture :  <Person /> } alt="" className="postImg" />
+                          <img src={user.profilePicture? user.profiePicture : PF+"person/avatar.png" } alt="" className="postImg" />
                         </Link>
                       
                       <span className="username">{user.username}</span>
