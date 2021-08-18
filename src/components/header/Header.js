@@ -1,13 +1,17 @@
 import React from 'react'
 import './header.scss'
 import {Search, Person, Chat, NotificationsActive } from '@material-ui/icons';
+import {Link} from 'react-router-dom'
 /* import {BrowerRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom' */
 
 function Header() {
     return (
         <div className="headerContainer">
             <div className="headerLeft">
-                <span className="logo">On patage</span>
+                <Link to="/" >
+                  <span className="logo">On patage</span>
+                </Link>
+                
                 
             </div>
 

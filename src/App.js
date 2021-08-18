@@ -4,28 +4,32 @@ import Home from './pages/home/Home'
 import Signup from './pages/signup/Signup';
 import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
-import Header from './components/header/Header';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
+import { AuthContext} from './context/AuthContext'
+import { useContext } from 'react';
+
 
 function App() {
+
+  const { user} = useContext(AuthContext);
   return (
     <div className="App">
-      <Router>
-        <Link to="/signup">Signup</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/">Home Page</Link>
-        <Link to="/profile">Profile</Link>
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              { user ? <Home /> : <Signup /> }
+            </Route>
+            <Route path="/signup">
+              { user ? <Redirect to="/" /> : <Signup /> }
+            </Route>
+            <Route path="/Login">
+              { user ? <Redirect to="/" /> : <Login /> }
+            </Route>
+            <Route path="/profile/:username" exact component={Profile} />
+          </Switch>
+        </Router>
 
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/signup" exact component={Signup} />
-          <Route path="/Login" exact component={Login} />
-          <Route path="/profile" exact component={Profile} />
-        </Switch>
-
-     
-
-      </Router>
+      
       
     </div>
   );
