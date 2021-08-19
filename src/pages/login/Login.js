@@ -21,11 +21,10 @@ function Login() {
             dispatch
             
         );
-        console.log(email.current.value)
-        console.log(password.current.value)
+       
     };
     
-    console.log(user)
+   
    
 
     return (

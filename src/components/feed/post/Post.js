@@ -6,25 +6,24 @@ import {format} from 'timeago.js';
 import {Link} from 'react-router-dom';
 import { AuthContext} from '../../../context/AuthContext'
 function Post({post}) {
-    const [like, setLike] = useState(post.like)
+    const [like, setLike] = useState(post.likes.length)
     const [isLiked, setIsLiked] = useState(false)
-    const [user, setUser] = useState({});
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER 
+    const { user } = useContext(AuthContext);
+    console.log(user._id)
 
     const likeHandle = () =>{
-        setLike(isLiked ? like-1 : like+1)
-        setIsLiked(!isLiked)
-    }
+        try{
+            axios.put("http://localhost:8800/api/posts/"+post._id+"/like", {userId:user._id})
+            setLike(isLiked ? like-1 : like+1)
+            setIsLiked(!isLiked)
 
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER 
+        } catch(err){
+            console.log(err)
 
-    useEffect(()=>{
-        const fetchUser = async ()=>{
-            const res = await axios.get(`http://localhost:8800/api/users?userId=${post.userId}`)
-            console.log(res);
-            setUser(res.data)
         }
-        fetchUser();
-    },[post.userId]);
+        
+    }
   
     return (
        
@@ -52,16 +51,12 @@ function Post({post}) {
                 <div className="postBottom">
                     <div className="postBottomLeft">
                         <img src={`${PF}like.png`} alt="" onClick={likeHandle} />
-                        <img src={`${PF}heart.png`} alt="" />
                         <span>{like} </span>
                     </div>
                     <div className="postBottomRight">
                         {post.comment}
                         <span>comments</span>
                     </div>
-                  {/*   <ThumbUp />
-                    <Message />
-                    <Share /> */}
 
 
                 </div>
