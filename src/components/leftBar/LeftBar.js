@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import './leftBar.scss'
 import {
     RssFeed,
@@ -11,10 +11,9 @@ import {
     Event,
     School,
   } from "@material-ui/icons";
-  import {Users} from '../../datas'
-  import Friends from './Friends';
 
 function LeftBar() {
+   
     return (
         <div>
             <div className="leftBar">
@@ -75,11 +74,11 @@ function LeftBar() {
                 </ul>
                <button className="leftBarBtn">Show More</button>
                <hr />
-               {
+             {/*   {
                    Users.map(user=>(
                        <Friends key={user.id} user={user} />
                    ))
-               }
+               } */}
                
               
             </div>

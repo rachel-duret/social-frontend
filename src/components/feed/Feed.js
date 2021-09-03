@@ -5,7 +5,7 @@ import Post from './post/Post'
 import axios from 'axios'
 import { AuthContext} from '../../context/AuthContext';
 
-function Feed(username) {
+function Feed(userId) {
     const { user } = useContext(AuthContext);
     const [post, setPost]=useState([]);
 
@@ -18,7 +18,7 @@ function Feed(username) {
             }));
         };
         fetchPost();
-    },[username, user._id])
+    },[ user._id])
 
 
     return (

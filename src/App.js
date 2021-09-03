@@ -25,7 +25,7 @@ function App() {
             <Route path="/Login">
               { user ? <Redirect to="/" /> : <Login /> }
             </Route>
-            <Route path="/profile/:username" exact component={Profile} />
+            <Route path="/profile/:userId" exact component={Profile} />
           </Switch>
         </Router>
 

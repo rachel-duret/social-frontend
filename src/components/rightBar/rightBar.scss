@@ -1,4 +1,4 @@
-.rightBar{
+.rightbar{
     flex: 3;
     height: calc(100vh-50px);
     background-color:whitesmoke;
@@ -69,10 +69,22 @@
             font-weight: 600px;
             cursor: pointer;
         }
+       
         
     }
-    h4{
-        margin: 20px ;
-        border-bottom: 1px dashed gray;
+    .rightbarProfileContainer{
+        .rightbarProfileContainerHeader{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-bottom: 1px dashed gray;
+
+            
+           
+        }
+    
+        
+
     }
+   
 }

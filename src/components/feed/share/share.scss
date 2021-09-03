@@ -1,7 +1,7 @@
 .share{
     border-radius: 20px;
     width: 95%;
-    height: 200px;
+  
     -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
     box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66);
     margin: 20px;
@@ -81,6 +81,21 @@
     }
     hr{
         margin: 20px;
+    }
+    .shareImgContainer{
+        padding: 0 20px 10px 20px;
+        position: relative;
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+        .shareCancelImg{
+            position: absolute;
+            top:0;
+            right: 20px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
     }
 
 }

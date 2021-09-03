@@ -10,7 +10,7 @@ function Post({post}) {
     const [isLiked, setIsLiked] = useState(false)
     const PF = process.env.REACT_APP_PUBLIC_FOLDER 
     const { user } = useContext(AuthContext);
-    console.log(user._id)
+   /*  console.log(user._id) */
 
     const likeHandle = () =>{
         try{
@@ -31,7 +31,7 @@ function Post({post}) {
             <div className="postContainer">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <Link to={`profile/${user.username}`}>
+                        <Link to={`profile/${user._id}`}>
                           <img src={user.profilePicture? user.profiePicture : PF+"person/avatar.png" } alt="" className="postImg" />
                         </Link>
                       

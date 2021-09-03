@@ -18,33 +18,28 @@ const AuthReducer = (state, action) =>{
                     isFetching: false,
                     error: true,
                 };
-           /*  case "FOLLOW":
-                return {
-                    ...state,
-                    user：{
+                case "FOLLOW":
+                    return {
+                      ...state,// take the state before
+                      user: {
+                        ...state.user,// take everthing in the user , but change the followings state
+                        followings: [...state.user.followings, action.payload],
+                      },
+                    };
+                  case "UNFOLLOW":
+                    return {
+                      ...state,
+                      user: {
                         ...state.user,
-                        followings: [...state.user.followings, action.payload]
-                    }
-                   
-                };
-            case "UNFOLLOW":
-                return {
-                    ...state,
-                    user：{
-                        ...state.user,
-                        followings: state.user.followings, filter(
-                            (followings)=> followings !== action.payload
+                        followings: state.user.followings.filter(
+                          (following) => following !== action.payload
                         ),
-                    },
-                       
-                };             */
-
-            
-            
-    
-        default:
-            return state;
+                      },
+                    };
+                  default:
+                    return state;
+                }
     }
-}
+
 
 export default AuthReducer;

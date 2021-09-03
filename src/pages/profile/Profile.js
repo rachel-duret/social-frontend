@@ -1,27 +1,32 @@
 import React,{useState, useEffect, useContext } from 'react'
-import Feed from '../../components/feed/Feed'
 import Header from '../../components/header/Header'
 import LeftBar from '../../components/leftBar/LeftBar'
-import RightBar from '../../components/rightBar/RightBar'
+import ProfileRightBar from './ProfileRightBar'
 import axios from 'axios';
 import './profile.scss'
 import {useParams} from 'react-router'; 
 import { AuthContext } from '../../context/AuthContext'
+import {format} from 'timeago.js';
+
 
 function Profile() {
    /*  const { user } = useContex(AuthContext); */
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser]= useState({});
-    const username = useParams().username;
+    const [posts, setPosts]= useState([])
+    const userId = useParams().userId;
 
     useEffect(()=>{
         const fetchUser = async ()=>{
-            const res = await axios.get(`http://localhost:8800/api/users?username=${username}`);
-            setUser(res.data);
-            console.log(res.data)
+            const res = await axios.get(`http://localhost:8800/api/posts/profile/${userId}`);
+            setUser(res.data[0]);
+            setPosts(res.data[1].sort((p1,p2)=>{
+                return new Date(p2.createdAt) - new Date(p1.createdAt)
+            }));
+            
         }
         fetchUser();
-    },[username])
+    },[userId])
     return (
         <div className="profile">
             <Header />
@@ -31,18 +36,60 @@ function Profile() {
                 </div>
                 <div className="profileRight">
                     <div className="profileCove">
-                        <img src={PF+"./assets/photo3.png"} className="profileCoveImg" alt="" />
-                        <img src={ user.profilePicture ? PF+user.profilePicture : PF+"person/avatar.png"} alt="" className="profileImg" />
+                        <img src={user.coverPicture ? user.coverPicture : PF+'/cover.png'} className="profileCoveImg" alt="" />
+                        <img src={ user.profilePicture ? user.profilePicture : PF+"person/avatar.png"} alt="" className="profileImg" />
 
                     </div>
                     <div className="profileInfo">
-                        <h4>{username}</h4>
+                        <h4>{user.username}</h4>
                         <span>{user.desc}</span>
                     </div>
                     <div className="profileRightBottom">
-                        <Feed username={username} />
-                        <RightBar profile />
+                        <div className="profilePosts">
+                        {
+                           posts.map((post, key)=>{
+                               return <div className="post" key={post._id}>
+                               <div className="postContainer">
+                                   <div className="postTop">
+                                       <div className="postTopLeft">
+                                          
+                                             <img src={user.profilePicture? user.profiePicture : PF+"person/avatar.png" } alt="" className="postImg" />
+                                         
+                                         
+                                         <span className="username">{user.username}</span>
+                                         <span className="date">{format(post.creatdAt)}</span>
+                                       </div>
+                                       
+                                       
+                                   </div>
+                                   <div className="postCenter">
+                                       <span>{post.desc}</span>
+                                       <img src={post.img} alt="" />
+                                   </div>
+                                   <div className="postBottom">
+                                       <div className="postBottomLeft">
+                                           <img src={`${PF}like.png`} alt="" />
+                                           <span>{post.likes} </span>
+                                       </div>
+                                       <div className="postBottomRight">
+                                           {post.comment}
+                                           <span>comments</span>
+                                       </div>
+                   
+                   
+                                   </div>
+                               </div>
+                               
+                           </div>
+                           })
+                       }
+                        </div>
+                       
+                        <ProfileRightBar user={user}  />
+                       
+                      
                     </div>
+                   
                 </div>
             </div>
             

@@ -9,7 +9,7 @@ function OnlineUser({user}) {
             <ul className="rightbarFriends">
                 <li className="rightBarFriendList">
                     <div className="rightBarImgContainer">
-                      <img src={PF+user.profilePicture} alt=""className="rightBarImg" />
+                      <img src={user.profilePicture? +user.profilePicture : PF+'/person/avatar' } alt=""className="rightBarImg" />
                       <span></span>
                     </div>
                     <span className="rightBarUsername">{user.username}</span>

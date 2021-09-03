@@ -45,30 +45,7 @@
             margin: 20px 0;
         }
 
-        .leftBarFrindList{
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-      
-
-            .leftBarItem{
-                display: flex;              
-                margin-bottom: 20px;
-                align-items: center;
-
-                img{
-                    width: 30px;
-                    height: 30px;
-                    margin-right: 10px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-            }
-
-            
-        }
+       
     }
    
 }

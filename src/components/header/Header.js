@@ -44,7 +44,7 @@ function Header() {
                         <span className="headerIconBadge">1</span>
                     </div>
                 </div>
-                <Link to={ `/profile/${user.username}`}>
+                <Link to={ `/profile/${user._id}`}>
                   <img src={ user.profilePicture ? PF + user.profilePicture : PF + "person/avatar.png" } alt="" className="headerImg" />
                 </Link>
                 

@@ -39,6 +39,149 @@
         }
         .profileRightBottom{
             display: flex;
+            .profilePosts{
+                flex:6;
+                .post{
+                   
+                    border-radius: 20px;
+                    width: 95%;
+                    height: auto;
+                    -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
+                    box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66);
+                    margin-left: 20px;
+                
+                    .postContainer{
+                        margin-top: 20px;
+                        .postTop{
+                            display: flex;
+                           align-items: center;
+                           justify-content: space-between;
+                
+                           .postTopLeft{
+                               display: flex;
+                               align-items: center;
+                            img{
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                                margin: 15px;
+                                cursor: pointer;
+                            }
+                            .username{
+                                font-size: 14px;
+                                font-weight: 500px;
+                                cursor: pointer;
+                                margin-right: 15px;
+                            }
+                            .date{
+                                font-size: 10px;
+                            }
+                           }
+                           .postTopRight{
+                               margin-right: 20px;
+                               cursor: pointer;
+                           }
+                        
+                        }
+                
+                        .postCenter{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                
+                            img{
+                                margin: 20px;
+                                width: 100%;
+                                max-height: 500px;
+                                object-fit: contain;
+                                cursor: pointer;
+                            }
+                        }
+                        .postBottom{
+                            display: flex;
+                            justify-content: space-between;
+                
+                            .postBottomLeft{
+                                margin-left: 20px;
+                                display: flex;
+                                
+                                img{
+                                    margin-right: 5px;
+                                    width: 20px;
+                                    height: 20px;
+                                    margin-bottom: 15px;
+                                    object-fit: contain;
+                                }
+                                span{
+                                    font-size: 12px;
+                                }
+                            }
+                            .postBottomRight{
+                                margin-right: 20px;
+                                font-size: 12px;
+                               
+                            }
+                        }
+                    }
+                }
+
+            }
+            
+            .rightbarProfileContainer{
+                flex: 3;
+                margin-left: 15px;
+                margin-top: 20px;
+                background-color: whitesmoke;
+               .rightbarProfileContainerHeader{
+                   display: flex;
+                   justify-content: space-around;
+                   .followbtn{
+                    display: flex;
+                    width: 80px;
+                    height: 30px;
+                    border-radius: 5px;
+                    align-items: center;
+                    border: none;
+                    padding: 5px;
+                    background-color: #fff;
+                    -webkit-box-shadow: 5px 5px 15px 5px #918b8b; 
+                    box-shadow: 5px 5px 15px 5px #918b8b;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: #8c9abe;
+                    }
+                   
+                }
+               }
+
+               .leftBarFrindList{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+          
+    
+                .leftBarItem{
+                    display: flex;              
+                    margin-bottom: 20px;
+                    align-items: center;
+    
+                    img{
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 10px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+    
+                
+            }
+            }
+            
         }
+        
     }
 }
