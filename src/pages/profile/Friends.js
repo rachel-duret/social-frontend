@@ -1,13 +1,14 @@
 import React from 'react'
 
-function Friends({user}) {
+function Friends({friend}) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER 
+  
     return (
         <div>
             <ul className="leftBarFrindList">
                    <li className="leftBarItem">
-                     <img src={PF+user.profilePicture} alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">{user.username}</span>                    
+                     <img src={friend.profilePicture? PF+friend.profilePicture: PF+'person/avatar.png'} alt="" className="leftBarImg" />
+                     <span className="leftBarFriendName">{friend.username}</span>                    
                    </li>  
             </ul>
             
