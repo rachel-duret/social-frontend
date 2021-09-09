@@ -78,9 +78,17 @@
                                 font-size: 10px;
                             }
                            }
-                           .postTopRight{
-                               margin-right: 20px;
-                               cursor: pointer;
+                           .deleteBtn{
+                               margin-right: 30px;
+                            .MuiSvgIcon-root{
+                                color: gray;
+                                width: 20px;
+                                &:hover{
+                                    cursor: pointer;
+                                    color: rgb(146, 9, 9);
+                                }
+                                
+                            } 
                            }
                         
                         }
@@ -120,6 +128,10 @@
                             .postBottomRight{
                                 margin-right: 20px;
                                 font-size: 12px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                               
                                
                             }
                         }

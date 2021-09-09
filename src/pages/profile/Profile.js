@@ -7,6 +7,7 @@ import './profile.scss'
 import {useParams} from 'react-router'; 
 import { AuthContext } from '../../context/AuthContext'
 import {format} from 'timeago.js';
+import { ArrowBackIosTwoTone, Delete } from '@material-ui/icons'
 
 
 function Profile() {
@@ -14,19 +15,50 @@ function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser]= useState({});
     const [posts, setPosts]= useState([])
-    const userId = useParams().userId;
-
+    const id = useParams().userId;
+    const {user: currentUser } = useContext(AuthContext);
     useEffect(()=>{
         const fetchUser = async ()=>{
-            const res = await axios.get(`http://localhost:8800/api/posts/profile/${userId}`);
-            setUser(res.data[0]);
-            setPosts(res.data[1].sort((p1,p2)=>{
-                return new Date(p2.createdAt) - new Date(p1.createdAt)
-            }));
+            try{
+                const res = await axios.get(`http://localhost:8800/api/posts/profile/${id}`);
+                setUser(res.data[0]);
+                setPosts(res.data[1].sort((p1,p2)=>{
+                    return new Date(p2.createdAt) - new Date(p1.createdAt)
+                }));
+
+            } catch(err){
+                console.log(err)
+            }
+           
             
         }
         fetchUser();
-    },[userId])
+    },[id]);
+   
+  
+    
+       
+
+        const deletePost =async () =>{
+            try{
+               await axios.delete('http://localhost:8800/api/posts/'+id, {userId:currentUser._id})
+               
+    
+            } catch(err){
+                console.log(err)
+    
+            }
+            
+        }
+      
+   
+
+ 
+    
+    
+  
+    
+  
     return (
         <div className="profile">
             <Header />
@@ -58,8 +90,10 @@ function Profile() {
                                          
                                          <span className="username">{user.username}</span>
                                          <span className="date">{format(post.creatdAt)}</span>
-                                       </div>
-                                       
+                                       </div> 
+                                       <div className="deleteBtn" onClick={deletePost} >
+                                         <Delete  />
+                                       </div>           
                                        
                                    </div>
                                    <div className="postCenter">
@@ -74,6 +108,7 @@ function Profile() {
                                        <div className="postBottomRight">
                                            {post.comment}
                                            <span>comments</span>
+                                          
                                        </div>
                    
                    

@@ -18,7 +18,6 @@ function ProfileRightBar({user}) {
          const friendsList = await axios.get(`http://localhost:8800/api/users/friends/`+user._id)
          /*  console.log(friendsList.data) */
           setFriends(friendsList.data)
-          console.log(friends)
 
         } catch(err){
           console.log(err)
@@ -28,7 +27,7 @@ function ProfileRightBar({user}) {
       getFriends();
     },[user._id])
 
-    const handleFllow = async () =>{
+    const handleFollow = async () =>{
         try{
             if(followed){
                 await axios.put(`http://localhost:8800/api/users/${user._id}/unfollowers`,{
@@ -56,7 +55,7 @@ function ProfileRightBar({user}) {
                   {
                       user._id !== currentUser._id 
                       &&
-                      <button className="followbtn" onClick={handleFllow} >
+                      <button className="followbtn" onClick={handleFollow} >
                    { followed ? "Unfollow" : "Follow" }
                    { followed ? <Remove /> : <Add />}
                   </button>
