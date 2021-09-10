@@ -110,8 +110,9 @@
             .commentInput{
                
                     width: 90%;
-                    height: 50px;
-                    border-radius: 20px;
+                    height: auto;
+                    padding: 5px;
+                    border-radius: 5px;
                     outline: none;
                     border: none;
                     -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
@@ -129,8 +130,19 @@
                     svg{
                         margin: 10px;
                         color: gray;
+                        color: green;
                         &:hover{
                             cursor: pointer;
+                        }
+                    }
+                    .sendBtn{
+                        outline: none;
+                        border: none;
+                        background-color: white;
+                        svg{
+                        
+                            color: yellowgreen;
+                           
                         }
                     }
                 
@@ -151,19 +163,67 @@
                 border: 1px solid gray;
 
             }
-            .commentDesc{
+            .commentBody{
                 width: 100%;
-                height: 50px;
-                border-radius: 20px;
+                height: auto;
+                padding: 5px;
+                border-radius: 5px;
                 outline: none;
                 border: none;
+                background-color: rgb(228, 225, 225);
                 -webkit-box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66); 
                 box-shadow: 4px 3px 13px 0px rgba(78,104,104,0.66);
                 display: flex;
-                flex-direction: column;
-                span{
-                    margin-left: 15px;
+                align-items: center;
+                justify-content: space-between;
+                .commentDesc{
+            
+                    display: flex;
+                    flex-direction: column;
+                    span{
+                        margin-left: 15px;
+                    }                  
                 }
+                .commentRight{
+                    display: flex;
+                    align-items: center;
+                    .commentLike{
+                        display: flex;
+                        align-items: center;
+                        span{
+                            font-size: 14px;
+                            margin-top: 5px;
+                          
+                        }
+                        svg{
+                            width: 20px;
+                            height: 20px;
+                            color: gray;
+                            &:hover{
+                                cursor: pointer;
+                                color:rgb(13, 13, 66)
+                            }
+                            
+                        }
+
+                    }
+                    .commentRightDelete{
+                        display: flex;
+                        align-items: center;
+                        margin-left: 5px;
+                        svg{
+                            width: 20px;
+                            height: 20px;
+                            color: gray;
+                            &:hover{
+                                cursor: pointer;
+                                color: red;
+                            }
+                        }
+                    }
+                   
+                }
+            
                
                 
                 

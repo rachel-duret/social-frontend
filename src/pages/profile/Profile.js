@@ -7,7 +7,7 @@ import './profile.scss'
 import {useParams} from 'react-router'; 
 import { AuthContext } from '../../context/AuthContext'
 import {format} from 'timeago.js';
-import { ArrowBackIosTwoTone, Delete } from '@material-ui/icons'
+import {  Delete } from '@material-ui/icons'
 
 
 function Profile() {
