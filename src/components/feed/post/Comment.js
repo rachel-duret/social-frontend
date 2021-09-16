@@ -105,7 +105,7 @@ function Comment({post}) {
                                                           </div> 
                                                           <div className="commentRightDelete">
                                                           {
-                                                              comment.userId===user._id && ( <Delete /> )
+                                                              comment.userId===user.user._id && ( <Delete /> )
                                                           }
                                                           </div>
                                                           

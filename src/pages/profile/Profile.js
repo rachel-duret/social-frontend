@@ -17,6 +17,9 @@ function Profile() {
     const [posts, setPosts]= useState([])
     const id = useParams().userId;
     const {user: currentUser } = useContext(AuthContext);
+   
+
+
     useEffect(()=>{
         const fetchUser = async ()=>{
             try{
@@ -40,11 +43,11 @@ function Profile() {
        // delete one post
 
         const deletePost =async (post) =>{
-            console.log(post)
+          
             try{
                
-               await axios.delete('http://localhost:8800/api/posts/'+post._id, {userId:currentUser.user._id})
-             
+               await axios.delete('http://localhost:8800/api/posts/'+post._id)
+               window.location.reload();
                
     
             } catch(err){
@@ -95,7 +98,14 @@ function Profile() {
                                          <span className="date">{format(post.creatdAt)}</span>
                                        </div> 
                                        <div className="deleteBtn" >
-                                         <Delete  onClick={()=>deletePost(post)} />
+                                           {
+                                               post.userId===currentUser.user._id && (
+                                                <Delete  onClick={()=>deletePost(post)} />
+
+                                               )
+                                           }
+                                         
+                                         
                                        </div>           
                                        
                                    </div>

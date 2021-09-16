@@ -12,12 +12,16 @@ import { useContext } from 'react';
 function App() {
 
   const { user} = useContext(AuthContext);
+
+
+  
+
   return (
     <div className="App">
         <Router>
           <Switch>
             <Route path="/" exact>
-              { user ? <Home /> : <Signup /> }
+              { user ? <Home /> : <Login /> }
             </Route>
             <Route path="/signup">
               { user ? <Redirect to="/" /> : <Signup /> }
