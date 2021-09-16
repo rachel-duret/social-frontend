@@ -4,6 +4,7 @@ import axios from 'axios';
 import {format} from 'timeago.js';
 import { AuthContext} from '../../../context/AuthContext'
 
+
 function Comment({post}) {
  
     const commentDesc=useRef();
@@ -13,12 +14,13 @@ function Comment({post}) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER 
     const { user } = useContext(AuthContext);
     const [comments, setComments] = useState([])
+    const [commet, setComment] = useState('')
 
     
     const handleComment = async (e)=>{
         e.preventDefault();
         const newComment = {
-            userId: user._id,
+            userId: user.user._id,
             desc:commentDesc.current.value,
             postId:post._id
         }
@@ -34,7 +36,8 @@ function Comment({post}) {
             console.log(newComment)
 
             try{
-                await axios.post('http://localhost:8800/api/upload', data)
+                const res = await axios.post('http://localhost:8800/api/upload', data)
+            
             } catch(err){
                 console.log(err)
             }
@@ -42,7 +45,9 @@ function Comment({post}) {
         }
 
         try{
-            await axios.post("http://localhost:8800/api/comments", newComment)
+            const res = await axios.post("http://localhost:8800/api/comments", newComment)
+           console.log(res)
+         
 
         } catch(err){
           
@@ -65,7 +70,25 @@ function Comment({post}) {
 
         fetchComents()
     },[post._id])
-   
+    
+    // delete one comment
+    const deleteOneComment =async (comment) =>{
+          
+        try{
+           
+           await axios.delete('http://localhost:8800/api/comments/'+comment._id)
+          setComments(comments.filter((val)=>{
+              console.log(val);
+              return val.id !== comment._id
+          }))
+           
+
+        } catch(err){
+            console.log(err)
+
+        }
+        
+    }
 
     return (
         <div>
@@ -105,7 +128,9 @@ function Comment({post}) {
                                                           </div> 
                                                           <div className="commentRightDelete">
                                                           {
-                                                              comment.userId===user.user._id && ( <Delete /> )
+                                                              comment.userId===user.user._id && ( 
+                                                                <Delete  onClick={()=>deleteOneComment(comment)} />
+                                                                 )
                                                           }
                                                           </div>
                                                           
