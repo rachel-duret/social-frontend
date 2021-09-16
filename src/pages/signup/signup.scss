@@ -62,8 +62,11 @@
                 }
 
                 .loginSignupButton{
+                    display: inline-block;
+                    text-decoration: none;
+                    text-align: center;
                     width: 60%;
-                    align-self: center;
+                    align-items: center;
                     height: 50px;
                     border-radius: 10px;
                     border: none;

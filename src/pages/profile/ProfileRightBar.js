@@ -31,12 +31,12 @@ function ProfileRightBar({user}) {
         try{
             if(followed){
                 await axios.put(`http://localhost:8800/api/users/${user._id}/unfollowers`,{
-                    userId: currentUser._id,
+                    userId: currentUser.user._id,
                 });
                setFollowed(false)
             } else {
                 await axios.put(`http://localhost:8800/api/users/${user._id}/followers`,{
-                    userId: currentUser._id,
+                    userId: currentUser.user._id,
                 });
                 setFollowed(true)
             }
@@ -53,7 +53,7 @@ function ProfileRightBar({user}) {
                 <div className="rightbarProfileContainerHeader">
                   {/* <h4>User Information</h4> */}
                   {
-                      user._id !== currentUser._id 
+                      user._id !== currentUser.user._id 
                       &&
                       <button className="followbtn" onClick={handleFollow} >
                    { followed ? "Unfollow" : "Follow" }

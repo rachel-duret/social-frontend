@@ -1,13 +1,19 @@
 import React,{ useContext } from 'react'
 import './header.scss'
 import {Search, Person, Chat, NotificationsActive } from '@material-ui/icons';
-import {Link} from 'react-router-dom'
+import {Link } from 'react-router-dom'
 import {AuthContext} from '../../context/AuthContext'
 
 
 function Header() {
     const { user } = useContext( AuthContext );
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
+    
+
+    const handleLogout = ()=>{
+        localStorage.removeItem('user');
+        window.location.reload();
+    }
     return (
         <div className="headerContainer">
             <div className="headerLeft">
@@ -27,13 +33,11 @@ function Header() {
 
             <div className="headerRight">
                 <div className="headerLinks">
-                    <span className="headerLink">Home Page</span>
-                    <span className="headerLink">Timeline</span>     
+                    <span className="headerLink">Home </span>    
                 </div>
                 <div className="headerIcons">
                     <div className="headerIconItem">
-                        <Person />
-                        <span className="headerIconBadge">1</span>
+                       <botton className="logout" onClick={handleLogout}>Logout</botton>
                     </div>
                     <div className="headerIconItem">
                         <Chat />
@@ -44,8 +48,8 @@ function Header() {
                         <span className="headerIconBadge">1</span>
                     </div>
                 </div>
-                <Link to={ `/profile/${user._id}`}>
-                  <img src={ user.profilePicture ? PF + user.profilePicture : PF + "person/avatar.png" } alt="" className="headerImg" />
+                <Link to={ `/profile/${user.user._id}`}>
+                  <img src={ user.user.profilePicture ? PF + user.user.profilePicture : PF + "person/avatar.png" } alt="" className="headerImg" />
                 </Link>
                 
                 

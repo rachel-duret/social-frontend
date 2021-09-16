@@ -11,7 +11,7 @@ function Feed(userId) {
 
     useEffect(()=>{
         const fetchPost = async ()=>{
-            const res = await axios.get(`http://localhost:8800/api/posts/timeline/`+user._id)    
+            const res = await axios.get(`http://localhost:8800/api/posts/timeline/`+user.user._id)    
         
             //用sort方法来排列显示最近发表的文章在头。
             setPost(res.data.sort((p1,p2)=>{
@@ -19,7 +19,7 @@ function Feed(userId) {
             }));
         };
         fetchPost();
-    },[ user._id])
+    },[ user.user._id])
 
 
     return (

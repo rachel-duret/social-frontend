@@ -37,11 +37,14 @@ function Profile() {
    
   
     
-       
+       // delete one post
 
-        const deletePost =async () =>{
+        const deletePost =async (post) =>{
+            console.log(post)
             try{
-               await axios.delete('http://localhost:8800/api/posts/'+id, {userId:currentUser._id})
+               
+               await axios.delete('http://localhost:8800/api/posts/'+post._id, {userId:currentUser.user._id})
+             
                
     
             } catch(err){
@@ -91,8 +94,8 @@ function Profile() {
                                          <span className="username">{user.username}</span>
                                          <span className="date">{format(post.creatdAt)}</span>
                                        </div> 
-                                       <div className="deleteBtn" onClick={deletePost} >
-                                         <Delete  />
+                                       <div className="deleteBtn" >
+                                         <Delete  onClick={()=>deletePost(post)} />
                                        </div>           
                                        
                                    </div>

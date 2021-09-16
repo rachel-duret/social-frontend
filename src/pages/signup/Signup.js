@@ -1,6 +1,7 @@
 import React,{ useRef } from 'react'
 import './signup.scss';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 function Signup() {
@@ -54,7 +55,7 @@ function Signup() {
                         <input type="password" className="loginInput" ref={ password } placeholder="Password" required />
                         <input type="password" className="loginInput" ref={ confirmePassword } placeholder="Confirme Password" required />
                         <button className="loginButton" type="submit">Signup</button>
-                        <button className="loginSignupButton">Log into Account</button>
+                        <Link to="/login" className="loginSignupButton">Log into Account</Link>
 
                     </form>
                 </div>

@@ -13,7 +13,7 @@ function Share() {
     const handleCreatePost = async (e) =>{
         e.preventDefault(); 
         const newPost ={
-            userId: user._id,
+            userId: user.user._id,
             desc:postDesc.current.value
         }
         if (file) {
@@ -44,9 +44,9 @@ function Share() {
         <div className='share'>
             <div className="shareContainer">
                 <div className="shareTop">
-                    <img src={ user.profilePicture ? PF+user.profilePicture : PF+"person/avatar.png"} alt="" className="shareImg" />
+                    <img src={ user.user.profilePicture ? PF+user.user.profilePicture : PF+"person/avatar.png"} alt="" className="shareImg" />
                     <label htmlFor="shareInput"></label>
-                    <input type="text" className="shareInput" id="shareInput" ref={postDesc} placeholder={"What's in your mind "+ user.username+"?"} />
+                    <input type="text" className="shareInput" id="shareInput" ref={postDesc} placeholder={"What's in your mind "+ user.user.username+"?"} />
                 </div>
                 <hr/>
                 {
