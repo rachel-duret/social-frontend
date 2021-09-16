@@ -47,7 +47,11 @@ function Profile() {
             try{
                
                await axios.delete('http://localhost:8800/api/posts/'+post._id)
-               window.location.reload();
+               setPosts(posts.filter((value)=>{
+                   return posts._id !==post._id
+                  
+               }))
+               window.location.reload()
                
     
             } catch(err){
@@ -116,7 +120,7 @@ function Profile() {
                                    <div className="postBottom">
                                        <div className="postBottomLeft">
                                            <img src={`${PF}like.png`} alt="" />
-                                           <span>{post.likes} </span>
+                                           <span>{post.likes.length} </span>
                                        </div>
                                        <div className="postBottomRight">
                                            {post.comment}

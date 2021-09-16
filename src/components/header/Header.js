@@ -18,7 +18,8 @@ function Header() {
         <div className="headerContainer">
             <div className="headerLeft">
                 <Link to="/" >
-                  <span className="logo">On patage</span>
+                  <h1 className="logo">Petit Cœur</h1>
+                  <img src={PF+'./barbie.png'} alt="" />
                 </Link>
                 
                 

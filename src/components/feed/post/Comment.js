@@ -47,6 +47,8 @@ function Comment({post}) {
         try{
             const res = await axios.post("http://localhost:8800/api/comments", newComment)
            console.log(res)
+           setComments([...comments, newComment])
+           commentDesc.current.value('')
          
 
         } catch(err){
@@ -77,11 +79,10 @@ function Comment({post}) {
         try{
            
            await axios.delete('http://localhost:8800/api/comments/'+comment._id)
-          setComments(comments.filter((val)=>{
-              console.log(val);
-              return val.id !== comment._id
-          }))
-           
+           setComments(comments.filter((value)=>{
+               console.log(value);
+               return value._id !==comment._id
+           }))
 
         } catch(err){
             console.log(err)

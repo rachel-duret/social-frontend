@@ -9,6 +9,7 @@ function Share() {
     const { user } = useContext(AuthContext);
     const postDesc = useRef();
     const [file, setFile] = useState("")
+    const [post, setPost]=useState([])
 
     const handleCreatePost = async (e) =>{
         e.preventDefault(); 
