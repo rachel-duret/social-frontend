@@ -7,6 +7,7 @@ import Profile from './pages/profile/Profile';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import { AuthContext} from './context/AuthContext'
 import { useContext } from 'react';
+import SetProfile from './pages/setProfile/SetProfile';
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
               { user ? <Redirect to="/" /> : <Login /> }
             </Route>
             <Route path="/profile/:userId" exact component={Profile} />
+            <Route path="/setProfile/:userId" exact component={SetProfile} />
+            
+          
           </Switch>
         </Router>
 

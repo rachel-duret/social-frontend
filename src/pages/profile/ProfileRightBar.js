@@ -2,8 +2,9 @@
 import React,{ useEffect, useContext, useState} from 'react'
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
-import { Add, FlashOnRounded, Remove} from '@material-ui/icons'
+import { Add, FlashOnRounded, Remove, Settings} from '@material-ui/icons'
 import Friends from './Friends';
+import { Link } from 'react-router-dom'
 
 function ProfileRightBar({user}) {
     const {user:currentUser} = useContext(AuthContext);
@@ -63,19 +64,31 @@ function ProfileRightBar({user}) {
                   
                  
                 </div>            
-                <div className="rightbarInfo">
-                  <div className="rightbarInfoItem">
-                    <span>username:{user.username}</span>
+                <div className="rightbarInfoContainer">
+                  <div className="rightbarInfo">
+                    <div className="rightbarInfoItem">
+                      <span>username:{user.username}</span>
+                    </div>
+                    <div className="rightbarInfoItem">
+                      <span>City:</span>
+                    </div>
+                    <div className="rightbarInfoItem">
+                      <span>Relationship:</span>
+                    </div>
+                    <div className="rightbarInfoItem">
+                      <span>Age:</span>
+                    </div>
+
                   </div>
-                  <div className="rightbarInfoItem">
-                    <span>City:</span>
-                  </div>
-                  <div className="rightbarInfoItem">
-                    <span>Relationship:</span>
-                  </div>
-                  <div className="rightbarInfoItem">
-                    <span>Age:</span>
-                  </div>
+
+                 
+                  {/* set profile page */}
+                  <Link to={ `/setProfile/${user._id}`}>
+                    <Settings />
+                  </Link>
+                  
+
+                  
                 </div>
                 <hr/>
                {
