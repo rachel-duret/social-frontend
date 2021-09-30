@@ -1,16 +1,18 @@
-import React,{ useContext, useRef, useState} from 'react'
+import React,{ useContext, useRef, useState, useEffect} from 'react'
 import './share.scss'
 import {PermMedia, Label, Room, EmojiEmotions, Cancel} from '@material-ui/icons'
 import { AuthContext } from '../../../context/AuthContext'
 import axios from 'axios';
-
+import {storage} from '../../../fireBase/config';
 function Share() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER 
     const { user } = useContext(AuthContext);
     const postDesc = useRef();
     const [file, setFile] = useState("")
-    const [post, setPost]=useState([])
-
+    const [error, setError] = useState(null);
+    const [imgUrl, setImgUrl] = useState('')
+    
+    // create post data
     const handleCreatePost = async (e) =>{
         e.preventDefault(); 
         const newPost ={
@@ -18,21 +20,30 @@ function Share() {
             desc:postDesc.current.value
         }
         if (file) {
-            const data = new FormData();
-            const fileName = Date.now() + file.name;
-            data.append("name", fileName);
-            data.append("file", file);
-            newPost.img = fileName;
+            //if there is an image file then upload the image to firebase- storage
+            const uploadTask = storage.ref('postImages/'+file.name).put(file);
+            uploadTask.on(
+                'state_changed',
+                snapshot=>{},
+                error=>{console.log(error)},
+                ()=>{
+                    storage
+                    .ref("postImages")
+                    .child(file.name)
+                    .getDownloadURL()
+                    .then(url => {
+                        console.log(url)
+                      setImgUrl(url);
+                    })
+                }
+            )
+           
+            newPost.img = imgUrl
             console.log(newPost);
-            try{
-                await axios.post('http://localhost:8800/api/upload', data)
-            } catch(err){
-                console.log(err)
-            }
-        }
-       
-
+           
+        }     
         try{
+            //send post data to server
             await axios.post("http://localhost:8800/api/posts", newPost)
             window.location.reload();
 

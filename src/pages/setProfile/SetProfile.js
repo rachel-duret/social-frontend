@@ -4,6 +4,8 @@ import Header from '../../components/header/Header'
 import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import {useParams} from 'react-router'; 
+import ProgressBar from '../../components/ProgressBar'
+import {storage} from '../../fireBase/config'
 
 
 function SetProfile() {
@@ -13,9 +15,14 @@ function SetProfile() {
   const  fromRef= useRef();
   const sexRef = useRef();
   const {user: currentUser } = useContext(AuthContext);
-  const [profileCoveFile, setProfileCoveFile]= useState('');
+  const [profileCoverFile, setProfileCoverFile]= useState('');
   const [profileFile, setProfileFile]= useState('')
+  const [profileCoverPictureUrl, setProfileCoverPictureUrl]= useState('');
+  const [profilePictureUrl, setProfilePictureUrl]= useState('')
   const id = useParams().userId;
+  const types = ['image/png','image/jpeg'];
+  const [error, setError] = useState(null);
+ 
 
   const handleProfileUpdate = async (e)=>{
     e.preventDefault();
@@ -28,35 +35,48 @@ function SetProfile() {
 
     }
     console.log(newProfile)
-    if(profileCoveFile ){
-      console.log(profileFile,profileCoveFile)
-      const data = new FormData();
-      const fileName = Date.now()+profileCoveFile.name;
-      data.append('name', fileName);
-      data.append('file', profileCoveFile);
-      newProfile.coverPicture = fileName
-      try{
-        await axios.post('http://localhost:8800/api/upload', data)
-
-      }catch(err){
-        console.log(err)
-
-      }
+    if(profileCoverFile ){
+      //if there is an image file then upload the image to firebase- storage
+      const uploadTask = storage.ref('profileCoverImages/'+profileCoverFile.name).put(profileCoverFile);
+      uploadTask.on(
+          'state_changed',
+          snapshot=>{},
+          error=>{console.log(error)},
+          ()=>{
+              storage
+              .ref("profileCoverImages")
+              .child(profileCoverFile.name)
+              .getDownloadURL()
+              .then(url => {
+                  console.log(url)
+                setProfileCoverPictureUrl(url);
+              })
+          }
+      )
+     
+      newProfile.coverPicture = profileCoverPictureUrl
+     
     };
     if(profileFile ){
-      const data = new FormData();
-      const fileName = Date.now()+profileFile.name;
-      data.append('name', fileName);
-      data.append('file', profileFile);
-      newProfile.profilePicture = fileName
-
-      try{
-        await axios.post('http://localhost:8800/api/upload', data)
-
-      }catch(err){
-        console.log(err)
-
-      }
+     //if there is an image file then upload the image to firebase- storage
+     const uploadTask = storage.ref('profileImages/'+profileFile.name).put(profileFile);
+     uploadTask.on(
+         'state_changed',
+         snapshot=>{},
+         error=>{console.log(error)},
+         ()=>{
+             storage
+             .ref("profileImages")
+             .child(profileFile.name)
+             .getDownloadURL()
+             .then(url => {
+                 console.log(url)
+               setProfilePictureUrl(url);
+             })
+         }
+     )
+    
+     newProfile.profilePicture = profilePictureUrl
     };
     console.log(newProfile)
 
@@ -97,11 +117,13 @@ function SetProfile() {
                     </div>
                     <div className="userItem">
                       <label htmlFor="profileCove">Profile cover Picture:</label>
-                      <input id="profileCove" type="file" onChange={(e)=>{setProfileCoveFile(e.target.files[0])}} />
+                      <input type="file" className="file" id="file" onChange={(e)=>{setProfileCoverFile(e.target.files[0])}} />
+                     
                     </div>
                     <div className="userItem">
                       <label htmlFor="profilePic">Profile Picture:</label>
-                      <input id="profilePic" type="file" onChange={(e)=>{setProfileFile(e.target.files[0])}} />
+                      <input type="file" className="file" id="file" onChange={(e)=>{setProfileFile(e.target.files[0])}} />
+                     
                     </div>
                     <button type="submit">Update</button>
                   
