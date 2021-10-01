@@ -38,16 +38,16 @@ function Share() {
                     })
                 }
             )  
-            newPost.img = imgUrl
-            console.log(newPost);   
-            try{
-                //send post data to server
-                await axios.post("http://localhost:8800/api/posts", newPost)
-               /*  window.location.reload(); */
-    
-            } catch(err){
-    
-            }
+             newPost.img = imgUrl
+        console.log(newPost);   
+        try{
+            //send post data to server
+            await axios.post("http://localhost:8800/api/posts", newPost)
+           /*  window.location.reload(); */
+
+        } catch(err){
+
+        }
         }  
         
        

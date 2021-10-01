@@ -1,11 +1,9 @@
 import React from 'react'
 import './leftBar.scss'
 import {
-    RssFeed,
     Chat,
     PlayCircleFilledOutlined,
     Group,
-    Bookmark,
     HelpOutline,
     WorkOutline,
     Event,
@@ -18,12 +16,6 @@ function LeftBar() {
         <div>
             <div className="leftBar">
             <div className="leftBarContainer">
-                <ul className="leftBarList">
-                    <li className="leftBarListItem">
-                        < RssFeed />
-                        <span>Feed</span>
-                    </li>
-                </ul>
                 <ul className="leftBarList">
                     <li className="leftBarListItem">
                         < Chat />
@@ -42,12 +34,7 @@ function LeftBar() {
                         <span>Groups</span>
                     </li>
                 </ul>
-                <ul className="leftBarList">
-                    <li className="leftBarListItem">
-                        <Bookmark />
-                        <span>Bookmarks</span>
-                    </li>
-                </ul>
+               
                 <ul className="leftBarList">
                     <li className="leftBarListItem">
                         <HelpOutline />
