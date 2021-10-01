@@ -67,16 +67,29 @@ function ProfileRightBar({user}) {
                 <div className="rightbarInfoContainer">
                   <div className="rightbarInfo">
                     <div className="rightbarInfoItem">
-                      <span>username:{user.username}</span>
+                      <p>Name:
+                        <span>{user.username}</span>
+                      </p>
                     </div>
                     <div className="rightbarInfoItem">
-                      <span>City:</span>
+                      <p>Race:
+                        <span>{user.race}</span>
+                      </p>
                     </div>
                     <div className="rightbarInfoItem">
-                      <span>Relationship:</span>
+                      <p>Sex:
+                        <span>{user.sex}</span>
+                      </p>
                     </div>
                     <div className="rightbarInfoItem">
-                      <span>Age:</span>
+                      <p>City:
+                        <span>{user.from}</span>
+                      </p>
+                    </div>
+                    <div className="rightbarInfoItem">
+                      <p>Birthday:
+                        <span>{user.birthday}</span>
+                      </p>
                     </div>
 
                   </div>

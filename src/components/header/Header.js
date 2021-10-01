@@ -50,7 +50,7 @@ function Header() {
                     </div>
                 </div>
                 <Link to={ `/profile/${user.user._id}`}>
-                  <img src={ user.user.profilePicture ? PF + user.user.profilePicture : PF + "person/avatar.png" } alt="" className="headerImg" />
+                  <img src={ user.user.profilePicture ?  user.user.profilePicture : PF + "person/avatar.png" } alt="" className="headerImg" />
                 </Link>
                 
                 

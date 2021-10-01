@@ -4,7 +4,6 @@ import Header from '../../components/header/Header'
 import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import {useParams} from 'react-router'; 
-import ProgressBar from '../../components/ProgressBar'
 import {storage} from '../../fireBase/config'
 
 
@@ -37,7 +36,8 @@ function SetProfile() {
     console.log(newProfile)
     if(profileCoverFile ){
       //if there is an image file then upload the image to firebase- storage
-      const uploadTask = storage.ref('profileCoverImages/'+profileCoverFile.name).put(profileCoverFile);
+      const fileName = new Date().getTime()+profileCoverFile.name;
+      const uploadTask = storage.ref('profileCoverImages/'+fileName).put(profileCoverFile);
       uploadTask.on(
           'state_changed',
           snapshot=>{},
@@ -45,21 +45,20 @@ function SetProfile() {
           ()=>{
               storage
               .ref("profileCoverImages")
-              .child(profileCoverFile.name)
+              .child(fileName)
               .getDownloadURL()
               .then(url => {
                   console.log(url)
                 setProfileCoverPictureUrl(url);
               })
           }
-      )
-     
-      newProfile.coverPicture = profileCoverPictureUrl
-     
+      ) 
     };
+    newProfile.profilePicture = profilePictureUrl
     if(profileFile ){
      //if there is an image file then upload the image to firebase- storage
-     const uploadTask = storage.ref('profileImages/'+profileFile.name).put(profileFile);
+     const fileName = new Date().getTime()+profileFile.name;
+     const uploadTask = storage.ref('profileImages/'+fileName).put(profileFile);
      uploadTask.on(
          'state_changed',
          snapshot=>{},
@@ -67,7 +66,7 @@ function SetProfile() {
          ()=>{
              storage
              .ref("profileImages")
-             .child(profileFile.name)
+             .child(fileName)
              .getDownloadURL()
              .then(url => {
                  console.log(url)
@@ -75,9 +74,8 @@ function SetProfile() {
              })
          }
      )
-    
-     newProfile.profilePicture = profilePictureUrl
-    };
+    }; 
+    newProfile.coverPicture = profileCoverPictureUrl
     console.log(newProfile)
 
     try{
@@ -97,16 +95,16 @@ function SetProfile() {
                       <label htmlFor="race">
                       Race                    
                       </label>
-                      <input id="username" type="text" ref={raceRef} />
+                      <input id="race" type="text" ref={raceRef} required />
                       
                     </div>
                     <div className="userItem">
                       <label htmlFor="birthday">Birthday</label>
-                      <input id="birthday" type="date" ref={birthdayRef} />
+                      <input id="birthday" type="date" ref={birthdayRef} required/>
                     </div>
                     <div className="userItem">
-                      <label htmlFor="birthday">From</label>
-                      <input id="birthday" type="text" ref={fromRef} />
+                      <label htmlFor="from">From</label>
+                      <input id="from" type="text" ref={fromRef} required/>
                     </div>
                     <div className="userItem">
                        <label htmlFor="sex"> Sex</label>

@@ -173,7 +173,7 @@
                 }
                }
 
-               .leftBarFrindList{
+               .rightBarFrindList{
                 padding: 0;
                 margin: 0;
                 list-style: none;
@@ -181,7 +181,7 @@
                 flex-direction: column;
           
     
-                .leftBarItem{
+                .rightBarItem{
                     display: flex;              
                     margin-bottom: 20px;
                     align-items: center;
@@ -193,6 +193,11 @@
                         border-radius: 50%;
                         object-fit: cover;
                     }
+                    span{
+                        font-size: 14px;
+                        font-weight: 600;
+                        text-transform: capitalize;
+                    }
                 }
 
                 
@@ -201,9 +206,22 @@
             }
             .rightbarInfoContainer{
                 display: flex;
-                justify-content: space-around;
-                
+                justify-content: space-around; 
+                p{
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 1em;
+                    span{
+                        display: inline-block;
+                        text-transform: capitalize;
+                        margin-left: 5px;
+
+                    }
+                }
             }
+            }
+            .rightBarFrindList{
+                display: flex;
             }
             
         }

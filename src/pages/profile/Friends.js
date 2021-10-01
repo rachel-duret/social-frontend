@@ -5,10 +5,10 @@ function Friends({friend}) {
   
     return (
         <div>
-            <ul className="leftBarFrindList">
-                   <li className="leftBarItem">
-                     <img src={friend.profilePicture? PF+friend.profilePicture: PF+'person/avatar.png'} alt="" className="leftBarImg" />
-                     <span className="leftBarFriendName">{friend.username}</span>                    
+            <ul className="rightBarFrindList">
+                   <li className="rightBarItem">
+                     <img src={friend.profilePicture? friend.profilePicture: PF+'person/avatar.png'} alt="" className="rightBarImg" />
+                     <span className="rightBarFriendName">{friend.username}</span>                    
                    </li>  
             </ul>
             

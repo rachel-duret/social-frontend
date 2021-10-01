@@ -51,7 +51,7 @@ function Post({post}) {
                 <div className="postTop">
                     <div className="postTopLeft">
                         <Link to={`profile/${user._id}`}>
-                          <img src={user.profilePicture? user.profiePicture : PF+"person/avatar.png" } alt="" className="postImg" />
+                          <img src={currentUser.user.profilePicture? currentUser.user.profilePicture : PF+"person/avatar.png" } alt="" className="postImg" />
                         </Link>
                       
                       <span className="username">{user.username}</span>

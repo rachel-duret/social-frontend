@@ -21,7 +21,8 @@ function Share() {
         }
         if (file) {
             //if there is an image file then upload the image to firebase- storage
-            const uploadTask = storage.ref('postImages/'+file.name).put(file);
+            const fileName = new Date().getTime()+file.name;
+            const uploadTask = storage.ref('postImages/'+fileName).put(file);
             uploadTask.on(
                 'state_changed',
                 snapshot=>{},
@@ -29,36 +30,36 @@ function Share() {
                 ()=>{
                     storage
                     .ref("postImages")
-                    .child(file.name)
+                    .child(fileName)
                     .getDownloadURL()
                     .then(url => {
                         console.log(url)
                       setImgUrl(url);
                     })
                 }
-            )
-           
+            )  
             newPost.img = imgUrl
-            console.log(newPost);
-           
-        }     
-        try{
-            //send post data to server
-            await axios.post("http://localhost:8800/api/posts", newPost)
-            window.location.reload();
-
-        } catch(err){
-
-        }
+            console.log(newPost);   
+            try{
+                //send post data to server
+                await axios.post("http://localhost:8800/api/posts", newPost)
+               /*  window.location.reload(); */
+    
+            } catch(err){
+    
+            }
+        }  
+        
+       
 
     }
     return (
         <div className='share'>
             <div className="shareContainer">
                 <div className="shareTop">
-                    <img src={ user.user.profilePicture ? PF+user.user.profilePicture : PF+"person/avatar.png"} alt="" className="shareImg" />
+                    <img src={ user.user.profilePicture ? user.user.profilePicture : PF+"person/avatar.png"} alt="" className="shareImg" />
                     <label htmlFor="shareInput"></label>
-                    <input type="text" className="shareInput" id="shareInput" ref={postDesc} placeholder={"What's in your mind "+ user.user.username+"?"} />
+                    <input type="text" className="shareInput" id="shareInput" ref={postDesc} placeholder={"What's in your mind "+ user.user.username+"?"} required />
                 </div>
                 <hr/>
                 {

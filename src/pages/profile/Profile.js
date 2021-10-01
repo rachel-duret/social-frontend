@@ -95,7 +95,7 @@ function Profile() {
                                    <div className="postTop">
                                        <div className="postTopLeft">
                                           
-                                             <img src={user.profilePicture? user.profiePicture : PF+"person/avatar.png" } alt="" className="postImg" />
+                                             <img src={user.profilePicture ? user.profilePicture : PF+"person/avatar.png" } alt="" className="postImg" />
                                          
                                          
                                          <span className="username">{user.username}</span>
