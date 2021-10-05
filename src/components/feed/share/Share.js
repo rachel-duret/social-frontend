@@ -9,17 +9,17 @@ function Share() {
     const { user } = useContext(AuthContext);
     const postDesc = useRef();
     const [file, setFile] = useState("")
-    const [error, setError] = useState(null);
-    const [imgUrl, setImgUrl] = useState('')
+   
     
     // create post data
+    
     const handleCreatePost = async (e) =>{
         e.preventDefault(); 
-        const newPost ={
+        const newPost={
             userId: user.user._id,
-            desc:postDesc.current.value
+            desc:postDesc.current.value,
         }
-        if (file) {
+        if(file){
             //if there is an image file then upload the image to firebase- storage
             const fileName = new Date().getTime()+file.name;
             const uploadTask = storage.ref('postImages/'+fileName).put(file);
@@ -33,26 +33,35 @@ function Share() {
                     .child(fileName)
                     .getDownloadURL()
                     .then(url => {
-                        console.log(url)
-                      setImgUrl(url);
+                       
+                    newPost.img = url
+                    try{
+                        console.log(newPost)
+                        axios.post("http://localhost:8800/api/posts", newPost)
+                        window.location.reload()
+                    }
+                    catch(err){
+
+                    }
                     })
                 }
-            )  
-             newPost.img = imgUrl
-        console.log(newPost);   
-        try{
-            //send post data to server
-            await axios.post("http://localhost:8800/api/posts", newPost)
-           /*  window.location.reload(); */
+            ) 
 
-        } catch(err){
+        }else{
+            try{
+                console.log(newPost)
+                await axios.post("http://localhost:8800/api/posts", newPost)
+                window.location.reload()
+            }
+            catch(err){
 
+            }
         }
-        }  
-        
-       
+     
+            
 
     }
+  
     return (
         <div className='share'>
             <div className="shareContainer">

@@ -95,8 +95,8 @@ function Comment({post}) {
         <div>
              <div className="commentsContainer">
                                     <div className="commentLeft">
-                                      <img src={user.profilePicture? user.profiePicture : PF+"person/avatar.png" } alt=""  />
-                                      <span>{user.username}</span>
+                                      <img src={user.user.profilePicture? user.user.profilePicture : PF+"person/avatar.png" } alt=""  />
+                                      <span>{user.user.username}</span>
                                     </div>
                                     <div className="commentInput">
                                       <input type="text" ref={commentDesc} placeholder="Write your comment..." />
@@ -115,11 +115,11 @@ function Comment({post}) {
                                     comments.map((comment, key)=>{
                                         return <div className="CommentDescContainer">
                                                   <div className="commentDescImg">
-                                                    <img src={user.profilePicture? user.profiePicture : PF+"person/avatar.png" } alt=""  />
+                                                    <img src={user.user.profilePicture? user.user.profilePicture : PF+"person/avatar.png" } alt=""  />
                                                   </div>
                                                   <div className="commentBody">
                                                       <div className="commentDesc">
-                                                        <span>{user.username}</span>
+                                                        <span>{user.user.username}</span>
                                                         <span>{comment.desc}</span>
                                                       </div>
                                                       <div className="commentRight">

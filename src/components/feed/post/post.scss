@@ -25,6 +25,7 @@
                 cursor: pointer;
             }
             .username{
+                text-transform: capitalize;
                 font-size: 14px;
                 font-weight: 500px;
                 cursor: pointer;
@@ -103,6 +104,7 @@
                 }
                 span{
                     font-size: 13px;
+                    text-transform: capitalize;
                 }
                 
 
@@ -164,6 +166,7 @@
 
             }
             .commentBody{
+                text-transform: capitalize;
                 width: 100%;
                 height: auto;
                 padding: 5px;

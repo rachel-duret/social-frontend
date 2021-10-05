@@ -73,7 +73,7 @@ function Post({post}) {
                         <span>{like} </span>
                     </div>
                     <div className="postBottomRight">
-                        <div className="comment" onClick={()=>{setCommentState(true)}} >
+                        <div className="comment" onClick={()=>{setCommentState(!commentState)}} >
                             Comment
                            
                         </div>

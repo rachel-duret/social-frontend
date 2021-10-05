@@ -5,19 +5,19 @@ import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import {useParams} from 'react-router'; 
 import {storage} from '../../fireBase/config'
+import {useHistory} from 'react-router-dom';
 
 
 function SetProfile() {
 
   const raceRef = useRef();
   const birthdayRef = useRef();
+  const history = useHistory();
   const  fromRef= useRef();
   const sexRef = useRef();
   const {user: currentUser } = useContext(AuthContext);
   const [profileCoverFile, setProfileCoverFile]= useState('');
   const [profileFile, setProfileFile]= useState('')
-  const [profileCoverPictureUrl, setProfileCoverPictureUrl]= useState('');
-  const [profilePictureUrl, setProfilePictureUrl]= useState('')
   const id = useParams().userId;
   const types = ['image/png','image/jpeg'];
   const [error, setError] = useState(null);
@@ -48,13 +48,20 @@ function SetProfile() {
               .child(fileName)
               .getDownloadURL()
               .then(url => {
-                  console.log(url)
-                setProfileCoverPictureUrl(url);
+                 newProfile.coverPicture = url
+                 try{
+                  console.log(newProfile)
+                  axios.put('http://localhost:8800/api/users/'+id,newProfile)
+                  history.push(`/profile/${currentUser.user._id}`)
+                 
+              }
+              catch(err){
+
+              }
               })
           }
       ) 
-    };
-    newProfile.profilePicture = profilePictureUrl
+    }
     if(profileFile ){
      //if there is an image file then upload the image to firebase- storage
      const fileName = new Date().getTime()+profileFile.name;
@@ -69,21 +76,31 @@ function SetProfile() {
              .child(fileName)
              .getDownloadURL()
              .then(url => {
-                 console.log(url)
-               setProfilePictureUrl(url);
+              newProfile.profilePicture = url
+              try{
+               console.log(newProfile)
+               axios.put('http://localhost:8800/api/users/'+id,newProfile)
+               history.push(`/profile/${currentUser.user._id}`)
+           }
+           catch(err){
+
+           }
              })
          }
      )
-    }; 
-    newProfile.coverPicture = profileCoverPictureUrl
-    console.log(newProfile)
-
-    try{
-      const res = await axios.put('http://localhost:8800/api/users/'+id,newProfile)
-
-    }catch(err){
-
+    }else{
+      try{
+        const res = await axios.put('http://localhost:8800/api/users/'+id,newProfile)
+        console.log(res.data)
+        history.push(`/profile/${currentUser.user._id}`)
+  
+      }catch(err){
+  
+      }
     }
+  
+
+    
 
   }
     return (
