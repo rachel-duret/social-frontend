@@ -18,13 +18,12 @@ function Header() {
     }
     return (
         <div className="headerContainer">
+            
             <div className="headerLeft">
                 <Link to="/" >
-                  <h1 className="logo">Petit Cœur</h1>
+                  <h1 className="logo">PetitCœur</h1>
                   <img src={PF+'./barbie.png'} alt="" />
-                </Link>
-                
-                
+                </Link>                         
             </div>
 
             <div className="headerCenter">
@@ -34,7 +33,8 @@ function Header() {
                 </div>
             </div>
 
-            <div className="headerRight">
+            {user && (
+                <div className="headerRight">
                 <div className="headerLinks">
                 <Link to="/" >
                   <span className="headerLink">Home </span>  
@@ -55,12 +55,14 @@ function Header() {
                 <Link to={ `/profile/${user.user._id}`}>
                   <img src={ user.user.profilePicture ?  user.user.profilePicture : PF + "person/avatar.png" } alt="" className="headerImg" />
                 </Link>
-                <div className="headerIconItem">
+                <div >
                        <botton className="logout" onClick={handleLogout}>Logout</botton>
-                    </div>
+                </div>
                 
                 
             </div>
+            )}
+            
             
         </div>
     )

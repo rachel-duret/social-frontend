@@ -3,6 +3,7 @@ import './signup.scss';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import Header from '../../components/header/Header';
 
 function Signup() {
     const username = useRef();
@@ -43,21 +44,25 @@ function Signup() {
 
     return (
         <div className="login">
+              <Header />
             <div className="loginContainer">
                 <div className="loginLeft">
-                    <h3 className="loginLogo">On patage</h3>
-                    <span>we share our things </span>
+                    <h3 className="loginLogo">PetitCœur</h3>
+                    <span>We share everthing of our little heart!<br/>They are not just an animal, they are families !</span>
                 </div>
                 <div className="loginRight">
-                    <form action="" className="loginForm" onSubmit={ handleSignup }>
+                  <span className="loginSignupButton">Already have an ancount?
+                    <Link to="/login" className="loginSignupButton">Log In</Link>
+                  </span>
+                  <form action="" className="loginForm" onSubmit={ handleSignup }>
                         <input type="text" className="loginInput" ref={ username} placeholder="Username" required />
                         <input type="email" className="loginInput" ref={ email } placeholder="Email" required />
                         <input type="password" className="loginInput" ref={ password } placeholder="Password" required />
                         <input type="password" className="loginInput" ref={ confirmePassword } placeholder="Confirme Password" required />
                         <button className="loginButton" type="submit">Signup</button>
-                        <Link to="/login" className="loginSignupButton">Log into Account</Link>
+                       
 
-                    </form>
+                  </form>
                 </div>
             </div>
             
