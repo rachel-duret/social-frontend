@@ -36,7 +36,7 @@ function Comment({post}) {
             console.log(newComment)
 
             try{
-                const res = await axios.post('http://localhost:8800/api/upload', data)
+                const res = await axios.post('https://petitcoeur.herokuapp.com/api/upload', data)
             
             } catch(err){
                 console.log(err)
@@ -45,7 +45,7 @@ function Comment({post}) {
         }
 
         try{
-            const res = await axios.post("http://localhost:8800/api/comments", newComment)
+            const res = await axios.post("https://petitcoeur.herokuapp.com/api/comments", newComment)
            console.log(res)
            setComments([...comments, newComment])
            commentDesc.current.value('')
@@ -60,7 +60,7 @@ function Comment({post}) {
     useEffect(()=>{
         const fetchComents = async () =>{
             try{
-                const res = await axios.get("http://localhost:8800/api/comments/"+post._id)
+                const res = await axios.get("https://petitcoeur.herokuapp.com/api/comments/"+post._id)
                 console.log(res)
                 setComments(res.data)
 
@@ -78,7 +78,7 @@ function Comment({post}) {
           
         try{
            
-           await axios.delete('http://localhost:8800/api/comments/'+comment._id)
+           await axios.delete('https://petitcoeur.herokuapp.com/api/comments/'+comment._id)
            setComments(comments.filter((value)=>{
                console.log(value);
                return value._id !==comment._id

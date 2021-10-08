@@ -37,7 +37,7 @@ function Share() {
                     newPost.img = url
                     try{
                         console.log(newPost)
-                        axios.post("http://localhost:8800/api/posts", newPost)
+                        axios.post("https://petitcoeur.herokuapp.com/api/posts", newPost)
                         window.location.reload()
                     }
                     catch(err){
@@ -50,7 +50,7 @@ function Share() {
         }else{
             try{
                 console.log(newPost)
-                await axios.post("http://localhost:8800/api/posts", newPost)
+                await axios.post("https://petitcoeur.herokuapp.com/api/posts", newPost)
                 window.location.reload()
             }
             catch(err){

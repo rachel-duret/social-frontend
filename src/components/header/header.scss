@@ -106,6 +106,13 @@
             object-fit: cover;
             cursor: pointer;
         }
+        a{
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            color: white;
+        }
         
     }
 }

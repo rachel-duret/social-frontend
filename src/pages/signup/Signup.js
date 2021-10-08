@@ -28,7 +28,7 @@ function Signup() {
 
             try{
                
-                const res = await axios.post("http://localhost:8800/api/users/signup", user)
+                const res = await axios.post("https://petitcoeur.herokuapp.com/api/users/signup", user)
                 console.log(res.data)
                 history.push('/login')
 

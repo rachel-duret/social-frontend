@@ -51,7 +51,7 @@ function SetProfile() {
                  newProfile.coverPicture = url
                  try{
                   console.log(newProfile)
-                  axios.put('http://localhost:8800/api/users/'+id,newProfile)
+                  axios.put('https://petitcoeur.herokuapp.com/api/users/'+id,newProfile)
                   history.push(`/profile/${currentUser.user._id}`)
                  
               }
@@ -79,7 +79,7 @@ function SetProfile() {
               newProfile.profilePicture = url
               try{
                console.log(newProfile)
-               axios.put('http://localhost:8800/api/users/'+id,newProfile)
+               axios.put('https://petitcoeur.herokuapp.com/api/users/'+id,newProfile)
                history.push(`/profile/${currentUser.user._id}`)
            }
            catch(err){
@@ -90,7 +90,7 @@ function SetProfile() {
      )
     }else{
       try{
-        const res = await axios.put('http://localhost:8800/api/users/'+id,newProfile)
+        const res = await axios.put('https://petitcoeur.herokuapp.com/api/users/'+id,newProfile)
         console.log(res.data)
         history.push(`/profile/${currentUser.user._id}`)
   

@@ -34,7 +34,10 @@ function Header() {
 
             <div className="headerRight">
                 <div className="headerLinks">
-                    <span className="headerLink">Home </span>    
+                <Link to="/" >
+                  <span className="headerLink">Home </span>  
+                </Link>
+                      
                 </div>
                 <div className="headerIcons">
                     <div className="headerIconItem">

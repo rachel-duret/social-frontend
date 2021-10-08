@@ -23,7 +23,7 @@ function Profile() {
     useEffect(()=>{
         const fetchUser = async ()=>{
             try{
-                const res = await axios.get(`http://localhost:8800/api/posts/profile/${id}`);
+                const res = await axios.get(`https://petitcoeur.herokuapp.com/api/posts/profile/${id}`);
                 setUser(res.data[0]);
                 setPosts(res.data[1].sort((p1,p2)=>{
                     return new Date(p2.createdAt) - new Date(p1.createdAt)
@@ -46,7 +46,7 @@ function Profile() {
           
             try{
                
-               await axios.delete('http://localhost:8800/api/posts/'+post._id)
+               await axios.delete('https://petitcoeur.herokuapp.com/api/posts/'+post._id)
                setPosts(posts.filter((value)=>{
                    return posts._id !==post._id
                   

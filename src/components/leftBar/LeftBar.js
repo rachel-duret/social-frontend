@@ -13,8 +13,8 @@ import {
 function LeftBar() {
    
     return (
-        <div>
-            <div className="leftBar">
+        
+        <div className="leftBar">
             <div className="leftBarContainer">
                 <ul className="leftBarList">
                     <li className="leftBarListItem">
@@ -41,12 +41,7 @@ function LeftBar() {
                         <span>Questions</span>
                     </li>
                 </ul>
-                <ul className="leftBarList">
-                    <li className="leftBarListItem">
-                        < WorkOutline />
-                        <span>Jobs</span>
-                    </li>
-                </ul>
+               
                 <ul className="leftBarList">
                     <li className="leftBarListItem">
                         < Event />
@@ -56,7 +51,7 @@ function LeftBar() {
                 <ul className="leftBarList">
                     <li className="leftBarListItem">
                         < School />
-                        <span>Courses</span>
+                        <span>Education</span>
                     </li>
                 </ul>
                <button className="leftBarBtn">Show More</button>
@@ -70,7 +65,7 @@ function LeftBar() {
               
             </div>
         </div>
-        </div>
+        
     )
 }
 

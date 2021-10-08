@@ -17,7 +17,7 @@ function Post({post}) {
 
     const likeHandle = () =>{
         try{
-            axios.put("http://localhost:8800/api/posts/"+post._id+"/like", {userId:currentUser.user._id})
+            axios.put("https://petitcoeur.herokuapp.com/api/posts/"+post._id+"/like", {userId:currentUser.user._id})
             setLike(isLiked ? like-1 : like+1)
             setIsLiked(!isLiked)
 
@@ -31,7 +31,7 @@ function Post({post}) {
     useEffect(()=>{
         const fetchUser = async ()=>{
             try{
-                const res=await axios.get("http://localhost:8800/api/users/"+post.userId)
+                const res=await axios.get("https://petitcoeur.herokuapp.com/api/users/"+post.userId)
                 setUser(res.data);
 
             } catch(err){

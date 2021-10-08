@@ -16,7 +16,7 @@ function ProfileRightBar({user}) {
     useEffect(()=>{
       const getFriends = async ()=>{
         try{
-         const friendsList = await axios.get(`http://localhost:8800/api/users/friends/`+user._id)
+         const friendsList = await axios.get(`https://petitcoeur.herokuapp.com/api/users/friends/`+user._id)
          /*  console.log(friendsList.data) */
           setFriends(friendsList.data)
 
@@ -31,12 +31,12 @@ function ProfileRightBar({user}) {
     const handleFollow = async () =>{
         try{
             if(followed){
-                await axios.put(`http://localhost:8800/api/users/${user._id}/unfollowers`,{
+                await axios.put(`https://petitcoeur.herokuapp.com/api/users/${user._id}/unfollowers`,{
                     userId: currentUser.user._id,
                 });
                setFollowed(false)
             } else {
-                await axios.put(`http://localhost:8800/api/users/${user._id}/followers`,{
+                await axios.put(`https://petitcoeur.herokuapp.com/api/users/${user._id}/followers`,{
                     userId: currentUser.user._id,
                 });
                 setFollowed(true)
